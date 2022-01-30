@@ -7,60 +7,67 @@
     <title>Etch-a-Sketch</title>
     <link rel="stylesheet" href="styles.css">
 <body>
-
     <h1>
         ETCH-A-SKETCH
     </h1>
-
     <div id="containerAndButtons">
         <div id="buttonPanel">The buttons go here:
-
             <button id="blackButton">Black</button>
             <button id="randomButton">Random</button>
+            <button id="rainbowButton">Rainbow</button>
             <button id="eraserButton">Eraser</button>
+            <button id="clearGrid">Clear pad</button>
             <button id="newGridButton">Choose grid size</button>
-
-
         </div>
-        
-        <div id="gridContainer">
-        </div>
+        <div id="gridContainer"></div>
     </div>
-
-
-
 </body>
 
 <script>
 
     createFirstGrid()
 
+    let pickedColor = 'black';
+    let rainbowMode = 'unactive'
+
+    function colorFunction(pickedColor) {
+        if (rainbowMode == 'active') {
+            return "#" + Math.floor(Math.random()*16777215).toString(16)
+        } else if (rainbowMode == 'unactive') {
+        return pickedColor}
+    }
+
     const newGridButton = document.getElementById('newGridButton')
     newGridButton.addEventListener('click', e => createGrid())
-
-    let pickedColor = 'black';
 
     const blackButton = document.getElementById('blackButton')
     blackButton.addEventListener('click', e => {
         pickedColor = 'black';
-        console.log(pickedColor)
-    })
+        rainbowMode = 'unactive'})
 
     const randomButton = document.getElementById('randomButton')
     randomButton.addEventListener('click', e => {
         pickedColor = "#" + Math.floor(Math.random()*16777215).toString(16)
-        console.log(pickedColor)
-    })
+        rainbowMode = 'unactive'})
+
+    const rainbowButton = document.getElementById('rainbowButton')
+    rainbowButton.addEventListener('click', e => {
+        rainbowMode = 'active'})
 
     const eraserButton = document.getElementById('eraserButton')
     eraserButton.addEventListener('click', e => {
         pickedColor = 'white';
-        console.log(pickedColor)
+        rainbowMode = 'unactive'})
+
+    const clearButton = document.getElementById('clearGrid')
+    clearButton.addEventListener('click', e => {
+        cells.forEach(item => item.style = 'background-color: white')
     })
+
 
     const cells = document.querySelectorAll('.gridPixel')
     cells.forEach(item => item.addEventListener('mouseover', e => {
-        event.target.style = `background-color:${pickedColor}`
+        event.target.style = `background-color:${colorFunction(pickedColor)}`
     }))
     
     
@@ -95,7 +102,10 @@
             
             let cells = document.querySelectorAll('.gridPixel') //event listener has been inserted here because, after reseting the grid, it was disappearing
             cells.forEach(item => item.addEventListener('mouseover', e => {
-            event.target.style = `background-color: ${pickedColor}`
+            event.target.style = `background-color: ${colorFunction(pickedColor)}`
+
+            clearButton.addEventListener('click', e => {
+            cells.forEach(item => item.style = 'background-color: white')})
         }))}
 
         else alert('You must choose between 1 and 100')
