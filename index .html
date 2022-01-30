@@ -11,13 +11,17 @@
         ETCH-A-SKETCH
     </h1>
     <div id="containerAndButtons">
-        <div id="buttonPanel">The buttons go here:
-            <button id="blackButton">Black</button>
-            <button id="randomButton">Random</button>
+        <div id="buttonPanel">TOOL BOX
+            <p style="margin: 0px; margin-top: 10px;">Pick your color: <input id="colorInput" type="color" value="#40A1BF"></p>
+            <button id="blackButton">Black pen</button>
+            <button id="randomButton">Random color</button>
             <button id="rainbowButton">Rainbow</button>
             <button id="eraserButton">Eraser</button>
             <button id="clearGrid">Clear pad</button>
-            <button id="newGridButton">Choose grid size</button>
+            <button id="newGridButton">Change grid size</button>
+            <p id="copyright">
+                Copyright ® The Odin Project 2022 <br><a href="https://github.com/Bonetti2">github.com/Bonetti2</a>
+            </p>
         </div>
         <div id="gridContainer"></div>
     </div>
@@ -27,7 +31,7 @@
 
     createFirstGrid()
 
-    let pickedColor = 'black';
+    let pickedColor = '#40A1BF';
     let rainbowMode = 'unactive'
 
     function colorFunction(pickedColor) {
@@ -44,6 +48,14 @@
     blackButton.addEventListener('click', e => {
         pickedColor = 'black';
         rainbowMode = 'unactive'})
+
+    const colorButton = document.getElementById('colorInput')
+    colorButton.addEventListener('change', e => {
+        rainbowMode = 'unactive'
+        console.log(e.target.value)
+        pickedColor = e.target.value;})
+
+    colorButton.addEventListener('click', e => rainbowMode = 'unactive') //second event listener needed to 'colorButton' because, after rainbow is activated, if the color selector is called but the color doesn't change, the code wouldn't run and rainbow would remain active.
 
     const randomButton = document.getElementById('randomButton')
     randomButton.addEventListener('click', e => {
@@ -64,15 +76,11 @@
         cells.forEach(item => item.style = 'background-color: white')
     })
 
-
     const cells = document.querySelectorAll('.gridPixel')
     cells.forEach(item => item.addEventListener('mouseover', e => {
         event.target.style = `background-color:${colorFunction(pickedColor)}`
     }))
     
-    
-
-
     function createGrid() {
         
         let insertGridSize = prompt('Insert the grid size between 1 and 100', 'Max of 100')
@@ -100,7 +108,7 @@
             gridContainer.style.gridTemplateRows = `repeat(${insertGridSize}, 1fr)`;
             pickedColor = 'black'
             
-            let cells = document.querySelectorAll('.gridPixel') //event listener has been inserted here because, after reseting the grid, it was disappearing
+            let cells = document.querySelectorAll('.gridPixel') //event listener has been inserted here inside this function again because, after reseting the grid, it stopped working
             cells.forEach(item => item.addEventListener('mouseover', e => {
             event.target.style = `background-color: ${colorFunction(pickedColor)}`
 
@@ -109,9 +117,7 @@
         }))}
 
         else alert('You must choose between 1 and 100')
-}
-
-
+    }
 
     function createFirstGrid() {
         let gridSize = 1600;
@@ -126,6 +132,4 @@
         gridContainer.style.gridTemplateColumns = `repeat(${gridSize / 40}, 1fr)`;
         gridContainer.style.gridTemplateRows = `repeat(${gridSize} / 40, 1fr)`;
     }
-
-
 </script>
