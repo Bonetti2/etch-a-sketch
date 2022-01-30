@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-Sketch</title>
+    <link rel="stylesheet" href="styles.css">
+<body>
+
+    <h1>
+        ETCH-A-SKETCH
+    </h1>
+
+    <div id="containerAndButtons">
+        <div id="buttonPanel">The buttons go here:
+
+            <button id="blackButton">Black</button>
+            <button id="randomButton">Random</button>
+            <button id="eraserButton">Eraser</button>
+            <button id="newGridButton">Choose grid size</button>
+
+
+        </div>
+        
+        <div id="gridContainer">
+        </div>
+    </div>
+
+
+
+</body>
+
+<script>
+
+    createFirstGrid()
+
+    const newGridButton = document.getElementById('newGridButton')
+    newGridButton.addEventListener('click', e => createGrid())
+
+    let pickedColor = 'black';
+
+    const blackButton = document.getElementById('blackButton')
+    blackButton.addEventListener('click', e => {
+        pickedColor = 'black';
+        console.log(pickedColor)
+    })
+
+    const randomButton = document.getElementById('randomButton')
+    randomButton.addEventListener('click', e => {
+        pickedColor = "#" + Math.floor(Math.random()*16777215).toString(16)
+        console.log(pickedColor)
+    })
+
+    const eraserButton = document.getElementById('eraserButton')
+    eraserButton.addEventListener('click', e => {
+        pickedColor = 'white';
+        console.log(pickedColor)
+    })
+
+    const cells = document.querySelectorAll('.gridPixel')
+    cells.forEach(item => item.addEventListener('mouseover', e => {
+        event.target.style = `background-color:${pickedColor}`
+    }))
+    
+    
+
+
+    function createGrid() {
+        
+        let insertGridSize = prompt('Insert the grid size between 1 and 100', 'Max of 100')
+        console.log(typeof insertGridSize)
+            
+        if (insertGridSize > 0 && insertGridSize < 101) {
+
+            let gridSize = insertGridSize * insertGridSize
+
+            let gridContainer = document.getElementById('gridContainer')
+
+            while (gridContainer.firstChild) {
+            gridContainer.removeChild(gridContainer.lastChild)}
+
+            let i = 0;
+
+            while (i<gridSize) {
+                let newDiv = document.createElement('div')
+                newDiv.setAttribute('class', 'gridPixel')
+                gridContainer.appendChild(newDiv)
+                i++
+            }
+
+            gridContainer.style.gridTemplateColumns = `repeat(${insertGridSize}, 1fr)`;
+            gridContainer.style.gridTemplateRows = `repeat(${insertGridSize}, 1fr)`;
+            pickedColor = 'black'
+            
+            let cells = document.querySelectorAll('.gridPixel') //event listener has been inserted here because, after reseting the grid, it was disappearing
+            cells.forEach(item => item.addEventListener('mouseover', e => {
+            event.target.style = `background-color: ${pickedColor}`
+        }))}
+
+        else alert('You must choose between 1 and 100')
+}
+
+
+
+    function createFirstGrid() {
+        let gridSize = 1600;
+        let gridContainer = document.getElementById('gridContainer')
+        let i = 0;
+        while (i<gridSize) {
+            let newDiv = document.createElement('div')
+            newDiv.setAttribute('class', 'gridPixel')
+            gridContainer.appendChild(newDiv)
+            i++
+        }
+        gridContainer.style.gridTemplateColumns = `repeat(${gridSize / 40}, 1fr)`;
+        gridContainer.style.gridTemplateRows = `repeat(${gridSize} / 40, 1fr)`;
+    }
+
+
+</script>
