@@ -5,8 +5,8 @@ body {
     align-items: center;
     text-align: center;
     background-color:darkseagreen;
-    /* background-image:url(https://s1.1zoom.me/b5149/175/School_White_background_Pencils_Multicolor_568201_3840x2160.jpg); */
-    /* background-size: 100%; */
+    background-image:url(https://www.teahub.io/photos/full/102-1023067_color-pencil-art-wallpaper-in-hd-and-widescreen..jpg);
+    background-size: 100%;
 }
 
 #containerAndButtons {
@@ -14,7 +14,7 @@ body {
 }
 
 #buttonPanel {
-    background-color: gray;
+    background-color: rgba(128, 128, 128, 0.658);
     padding: 10px;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -27,16 +27,17 @@ body {
 
 button {
     font-weight: bolder;
-    background-color: rgb(115, 146, 115);
+    /* background-color: rgb(115, 146, 115); */
+    background-color: rgba(39, 126, 138, 0.801);
     border: 1px whitesmoke solid;
-    transition: 0.3s;
-    -webkit-transition: 0.3s;
+    transition: 0.15s;
+    -webkit-transition: 0.15s;
 }
 
 button:hover {
-    background-color: darkolivegreen;
-    transition: 0.3s;
-    -webkit-transition: 0.3s;
+    background-color: rgb(27, 87, 95);
+    transition: 0.15s;
+    -webkit-transition: 0.15s;
     padding: 5px;
     cursor: pointer;
     color: whitesmoke;
@@ -53,7 +54,7 @@ button:active {
     font-weight: lighter;
     margin-top: auto;
     margin-bottom: 2px;
-    color: rgb(87, 87, 87);
+    color: rgb(73, 73, 73);
 }
 
 a {
@@ -62,13 +63,16 @@ a {
 }
 
 #colorInput {
-    background-color: rgba(71, 92, 71, 0.555);
+    background-color: rgba(29, 95, 104, 0.185);
     border: 1px rgba(245, 245, 245, 0.356) solid;
 }
 
 #colorInput:hover {
-    scale: 1.1;
+    -webkit-transform: scale(1.05);
+    scale: 1.05;
     transition: 0.1s;
+    -webkit-transition: 0.1s;
+    cursor: pointer;
 }
 
 #gridContainer {
