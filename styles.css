@@ -27,7 +27,6 @@ body {
 
 button {
     font-weight: bolder;
-    /* background-color: rgb(115, 146, 115); */
     background-color: rgba(39, 126, 138, 0.801);
     border: 1px whitesmoke solid;
     transition: 0.15s;
@@ -87,4 +86,17 @@ a {
 
 .gridPixel {
     background-color:white;
+    transition: 0.15s;
+}
+
+.glowClass {
+    animation-name: testing;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes testing {
+    0% {filter: brightness(1);}
+    50% {filter: brightness(1.3);}
+    100% {filter:brightness(1)}
 }

@@ -19,6 +19,7 @@
             <button id="eraserButton">Eraser</button>
             <button id="clearGrid">Clear pad</button>
             <button id="newGridButton">Change grid size</button>
+            <button id="glowButton">Glow effect</button>
             <p id="copyright">
                 Copyright ® The Odin Project 2022 <br><a href="https://github.com/Bonetti2">github.com/Bonetti2</a>
             </p>
@@ -33,6 +34,7 @@
 
     let pickedColor = '#40A1BF';
     let rainbowMode = 'unactive'
+    let glowMode = false
 
     function colorFunction(pickedColor) {
         if (rainbowMode == 'active') {
@@ -76,9 +78,21 @@
         cells.forEach(item => item.style = 'background-color: white')
     })
 
+    const glowButton = document.getElementById('glowButton')
+    glowButton.addEventListener('click', e => {
+        if (glowMode == false) {
+            cells.forEach(item => item.classList.add('glowClass'))
+            glowMode = true;
+        } else if (glowMode == true) {
+            cells.forEach(item => item.classList.remove('glowClass'))
+            glowMode = false;
+        }
+    })
+
     const cells = document.querySelectorAll('.gridPixel')
     cells.forEach(item => item.addEventListener('mouseover', e => {
-        event.target.style = `background-color:${colorFunction(pickedColor)}`
+        event.target.style = `background-color:${colorFunction(pickedColor)}`;
+        // event.target.style = 'filter: brightness(50%)'} //JUST TESTING
     }))
     
     function createGrid() {
