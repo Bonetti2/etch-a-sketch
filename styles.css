@@ -9,6 +9,22 @@ body {
     background-size: 100%;
 }
 
+h1 {
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+
+h1:hover {
+    filter: blur(4px);
+    color: rgb(190, 114, 0);
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+
+#topTitle > p:hover {
+    color: whitesmoke;
+}
+
 #containerAndButtons {
     display: flex;
 }
@@ -89,14 +105,17 @@ a {
     transition: 0.15s;
 }
 
-.glowClass {
+/* THIS IS THE CODE FOR THE GLOW EFFECT - IT'S OFF BECAUSE IT OVERLOADED THE DOM TOO MUCH, BUT REMAINED HERE FOR REFERENCE */
+/* .glowClass {
     animation-name: testing;
-    animation-duration: 3s;
+    animation-duration: 1s;
     animation-iteration-count: infinite;
 }
 
 @keyframes testing {
     0% {filter: brightness(1);}
-    50% {filter: brightness(1.3);}
+    10% {filter: brightness(1.3);}
+    20% {filter: brightness(1);}
+    30% {filter: brightness(1.3);}
     100% {filter:brightness(1)}
-}
+} */

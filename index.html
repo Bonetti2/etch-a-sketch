@@ -17,9 +17,11 @@
             <button id="randomButton">Random color</button>
             <button id="rainbowButton">Rainbow</button>
             <button id="eraserButton">Eraser</button>
-            <button id="clearGrid">Clear pad</button>
+            <button id="removeGapButton" style="margin-top: 25px;">Remove lines</button>
             <button id="newGridButton">Change grid size</button>
-            <button id="glowButton">Glow effect</button>
+            <button id="clearGrid" style="margin-top: 25px;">Clear pad</button>
+            <p style="font-weight: lighter; color: rgb(61, 61, 61)">Click on the pad to<br> turn on/off your pencil</p>
+            <!-- <button id="glowButton">Glow effect</button> -->
             <p id="copyright">
                 Copyright ® The Odin Project 2022 <br><a href="https://github.com/Bonetti2">github.com/Bonetti2</a>
             </p>
@@ -34,7 +36,7 @@
 
     let pickedColor = '#40A1BF';
     let rainbowMode = 'unactive'
-    let glowMode = false
+    let gridGap = true
 
     function colorFunction(pickedColor) {
         if (rainbowMode == 'active') {
@@ -78,23 +80,46 @@
         cells.forEach(item => item.style = 'background-color: white')
     })
 
-    const glowButton = document.getElementById('glowButton')
-    glowButton.addEventListener('click', e => {
-        if (glowMode == false) {
-            cells.forEach(item => item.classList.add('glowClass'))
-            glowMode = true;
-        } else if (glowMode == true) {
-            cells.forEach(item => item.classList.remove('glowClass'))
-            glowMode = false;
+    const removeGapButton = document.getElementById('removeGapButton')
+    removeGapButton.addEventListener('click', e => {
+        if (gridGap == true) {
+            gridContainer.style.gap = '0px'
+            gridGap = false;
+        } else if (gridGap == false) {
+            gridContainer.style.gap = '1px'
+            gridGap = true;
         }
     })
 
+    // let glowMode = false // THIS IS THE CODE FOR THE GLOW EFFECT - IT'S OFF BECAUSE IT OVERLOADED THE DOM TOO MUCH, BUT REMAINED HERE FOR REFERENCE
+    // const glowButton = document.getElementById('glowButton')
+    // glowButton.addEventListener('click', e => {
+    //     if (glowMode == false) {
+    //         cells.forEach(item => item.classList.add('glowClass'))
+    //         glowMode = true;
+    //     } else if (glowMode == true) {
+    //         cells.forEach(item => item.classList.remove('glowClass'))
+    //         glowMode = false;
+    //     }
+    // })
+
+    function colorChanging() {
+            event.target.style = `background-color:${colorFunction(pickedColor)}`;
+        }
+
+    let pencilWork = false
     const cells = document.querySelectorAll('.gridPixel')
-    cells.forEach(item => item.addEventListener('mouseover', e => {
-        event.target.style = `background-color:${colorFunction(pickedColor)}`;
-        // event.target.style = 'filter: brightness(50%)'} //JUST TESTING
-    }))
-    
+    cells.forEach(item => item.addEventListener('click', e => {
+        if (pencilWork == false) {
+            cells.forEach(item => item.addEventListener('mouseover', colorChanging));
+            pencilWork = true;
+            console.log(pencilWork)
+        } else if (pencilWork == true) {
+            cells.forEach(item => item.removeEventListener('mouseover', colorChanging));
+            pencilWork = false;
+            console.log(pencilWork)
+        }}))
+        
     function createGrid() {
         
         let insertGridSize = prompt('Insert the grid size between 1 and 100', 'Max of 100')
@@ -121,14 +146,23 @@
             gridContainer.style.gridTemplateColumns = `repeat(${insertGridSize}, 1fr)`;
             gridContainer.style.gridTemplateRows = `repeat(${insertGridSize}, 1fr)`;
             pickedColor = 'black'
-            
-            let cells = document.querySelectorAll('.gridPixel') //event listener has been inserted here inside this function again because, after reseting the grid, it stopped working
-            cells.forEach(item => item.addEventListener('mouseover', e => {
-            event.target.style = `background-color: ${colorFunction(pickedColor)}`
+
+            let pencilWork = false
+            const cells = document.querySelectorAll('.gridPixel')
+            cells.forEach(item => item.addEventListener('click', e => {
+            if (pencilWork == false) {
+                cells.forEach(item => item.addEventListener('mouseover', colorChanging));
+                pencilWork = true;
+                console.log(pencilWork)
+            } else if (pencilWork == true) {
+                cells.forEach(item => item.removeEventListener('mouseover', colorChanging));
+                pencilWork = false;
+                console.log(pencilWork)
+            }}))
 
             clearButton.addEventListener('click', e => {
             cells.forEach(item => item.style = 'background-color: white')})
-        }))}
+        }
 
         else alert('You must choose between 1 and 100')
     }
