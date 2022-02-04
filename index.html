@@ -42,6 +42,7 @@
             <button id="purpleButton" class="shortcutButton">
             <button id="orangeButton" class="shortcutButton">
             <button id="brownButton" class="shortcutButton">
+            <button id="psycheButton" class="shortcutButton">
         </div>
     </div>
 </body>
@@ -79,6 +80,10 @@
 
     const rainbowButton = document.getElementById('rainbowButton')
     rainbowButton.addEventListener('click', e => {
+        rainbowMode = 'active'})
+
+    const psycheButton = document.getElementById('psycheButton')
+    psycheButton.addEventListener('click', e => {
         rainbowMode = 'active'})
 
     const eraserButton = document.getElementById('eraserButton')
