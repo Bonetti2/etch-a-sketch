@@ -107,18 +107,6 @@
         }
     })
 
-    // let glowMode = false // THIS IS THE CODE FOR THE GLOW EFFECT - IT'S OFF BECAUSE IT OVERLOADED THE DOM TOO MUCH, BUT REMAINED HERE FOR REFERENCE
-    // const glowButton = document.getElementById('glowButton')
-    // glowButton.addEventListener('click', e => {
-    //     if (glowMode == false) {
-    //         cells.forEach(item => item.classList.add('glowClass'))
-    //         glowMode = true;
-    //     } else if (glowMode == true) {
-    //         cells.forEach(item => item.classList.remove('glowClass'))
-    //         glowMode = false;
-    //     }
-    // })
-
     function colorChanging() {
             event.target.style = `background-color:${colorFunction(pickedColor)}`;
         }
@@ -161,7 +149,6 @@
 
             gridContainer.style.gridTemplateColumns = `repeat(${insertGridSize}, 1fr)`;
             gridContainer.style.gridTemplateRows = `repeat(${insertGridSize}, 1fr)`;
-            pickedColor = 'black'
 
             let pencilWork = false
             const cells = document.querySelectorAll('.gridPixel')
@@ -169,11 +156,9 @@
             if (pencilWork == false) {
                 cells.forEach(item => item.addEventListener('mouseover', colorChanging));
                 pencilWork = true;
-                console.log(pencilWork)
             } else if (pencilWork == true) {
                 cells.forEach(item => item.removeEventListener('mouseover', colorChanging));
                 pencilWork = false;
-                console.log(pencilWork)
             }}))
 
             clearButton.addEventListener('click', e => {
