@@ -13,7 +13,7 @@
     <div id="containerAndButtons">
         <div id="buttonPanel">TOOL BOX
             <p style="margin: 0px; margin-top: 10px;">Pick your color: <input id="colorInput" type="color" value="#40A1BF"></p>
-            <button id="blackButton">Black pen</button>
+            <!-- <button id="blackButton">Black pen</button> -->
             <button id="randomButton">Random color</button>
             <button id="rainbowButton">Rainbow</button>
             <button id="eraserButton">Eraser</button>
@@ -27,6 +27,22 @@
             </p>
         </div>
         <div id="gridContainer"></div>
+        <div id="colorPanel">
+            Color<br> Shortcut
+            <button id="blackButton" class="shortcutButton">
+            <button id="whiteButton" class="shortcutButton">
+            <button id="grayButton" class="shortcutButton">
+            <button id="redButton" class="shortcutButton"> 
+            <button id="greenButton" class="shortcutButton">
+            <button id="limeButton" class="shortcutButton">
+            <button id="yellowButton" class="shortcutButton">
+            <button id="blueButton" class="shortcutButton">
+            <button id="lightBluButton" class="shortcutButton">
+            <button id="pinkButton" class="shortcutButton">
+            <button id="purpleButton" class="shortcutButton">
+            <button id="orangeButton" class="shortcutButton">
+            <button id="brownButton" class="shortcutButton">
+        </div>
     </div>
 </body>
 
@@ -47,11 +63,6 @@
 
     const newGridButton = document.getElementById('newGridButton')
     newGridButton.addEventListener('click', e => createGrid())
-
-    const blackButton = document.getElementById('blackButton')
-    blackButton.addEventListener('click', e => {
-        pickedColor = 'black';
-        rainbowMode = 'unactive'})
 
     const colorButton = document.getElementById('colorInput')
     colorButton.addEventListener('change', e => {
@@ -180,4 +191,71 @@
         gridContainer.style.gridTemplateColumns = `repeat(${gridSize / 40}, 1fr)`;
         gridContainer.style.gridTemplateRows = `repeat(${gridSize} / 40, 1fr)`;
     }
+
+    //HERE GOES THE CODE FOR THE SHORTCUT COLOR BUTTONS
+
+    const blackButton = document.getElementById('blackButton')
+    blackButton.addEventListener('click', e => {
+    pickedColor = 'black';
+    rainbowMode = 'unactive'})
+
+    const whiteButton = document.getElementById('whiteButton')
+    whiteButton.addEventListener('click', e => {
+    pickedColor = 'white';
+    rainbowMode = 'unactive'})
+
+    const grayButton = document.getElementById('grayButton')
+    grayButton.addEventListener('click', e => {
+    pickedColor = 'gray';
+    rainbowMode = 'unactive'})
+
+    const redButton = document.getElementById('redButton')
+    redButton.addEventListener('click', e => {
+    pickedColor = 'red';
+    rainbowMode = 'unactive'})
+
+    const greenButton = document.getElementById('greenButton')
+    greenButton.addEventListener('click', e => {
+    pickedColor = 'green';
+    rainbowMode = 'unactive'})
+
+    const limeButton = document.getElementById('limeButton')
+    limeButton.addEventListener('click', e => {
+    pickedColor = 'lime';
+    rainbowMode = 'unactive'})
+
+    const yellowButton = document.getElementById('yellowButton')
+    yellowButton.addEventListener('click', e => {
+    pickedColor = 'yellow';
+    rainbowMode = 'unactive'})
+
+    const blueButton = document.getElementById('blueButton')
+    blueButton.addEventListener('click', e => {
+    pickedColor = 'blue';
+    rainbowMode = 'unactive'})
+
+    const lightBluButton = document.getElementById('lightBluButton')
+    lightBluButton.addEventListener('click', e => {
+    pickedColor = 'lightskyblue';
+    rainbowMode = 'unactive'})
+
+    const pinkButton = document.getElementById('pinkButton')
+    pinkButton.addEventListener('click', e => {
+    pickedColor = 'pink';
+    rainbowMode = 'unactive'})
+
+    const purpleButton = document.getElementById('purpleButton')
+    purpleButton.addEventListener('click', e => {
+    pickedColor = 'purple';
+    rainbowMode = 'unactive'})
+
+    const orangeButton = document.getElementById('orangeButton')
+    orangeButton.addEventListener('click', e => {
+    pickedColor = 'orangered';
+    rainbowMode = 'unactive'})
+
+    const brownButton = document.getElementById('brownButton')
+    brownButton.addEventListener('click', e => {
+    pickedColor = 'brown';
+    rainbowMode = 'unactive'})
 </script>

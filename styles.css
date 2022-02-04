@@ -39,6 +39,148 @@ h1:hover {
     flex-direction: column;
     gap: 10px;
     font-weight: bold;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+
+#buttonPanel:hover {
+    background-color: rgba(128, 128, 128, 0.815);
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+
+#colorPanel {
+    background-color: rgba(128, 128, 128, 0.658);
+    padding: 10px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 4px solid black;
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+
+.shortcutButton {
+    border-radius: 25px;
+    margin: 0px auto;
+    padding-top: 30%;
+    width: 30px;
+    border: 2px black solid;
+}
+
+.shortcutButton:hover {
+    scale: 1.4;
+    padding-top: 20px;
+}
+
+.shortcutButton:active {
+    scale: 1.3;
+}
+
+#blackButton {
+    background-color: black;
+}
+
+#blackButton:hover {
+    box-shadow: 0 0 2rem black;
+}
+
+#whiteButton {
+    background-color: white;
+}
+
+#whiteButton:hover {
+    box-shadow: 0 0 2rem white;
+}
+
+#yellowButton {
+    background-color: yellow;
+}
+
+#yellowButton:hover {
+    box-shadow: 0 0 2rem yellow;
+}
+
+#greenButton {
+    background-color: green;
+}
+
+#greenButton:hover {
+    box-shadow: 0 0 2rem green;
+}
+
+#redButton {
+    background-color: red;
+}
+
+#redButton:hover {
+    box-shadow: 0 0 2rem red;   
+}
+
+#blueButton {
+    background-color: blue;
+}
+
+#blueButton:hover {
+    box-shadow: 0 0 2rem blue;
+}
+
+#pinkButton {
+    background-color: pink;
+}
+
+#pinkButton:hover {
+    box-shadow: 0 0 2rem pink;
+}
+
+#purpleButton {
+    background-color: purple;
+}
+
+#purpleButton:hover {
+    box-shadow: 0 0 2rem purple;
+}
+
+#orangeButton {
+    background-color: orangered;
+}
+
+#orangeButton:hover {
+    box-shadow: 0 0 2rem orangered;
+}
+
+#brownButton {
+    background-color: brown;
+}
+
+#brownButton:hover {
+    box-shadow: 0 0 2rem brown;
+}
+
+#grayButton {
+    background-color: gray;
+}
+
+#grayButton:hover {
+    box-shadow: 0 0 2rem gray;
+}
+
+#limeButton {
+    background-color: lime;
+}
+
+#limeButton:hover {
+    box-shadow: 0 0 2rem lime;
+}
+
+#lightBluButton {
+    background-color: lightskyblue;
+}
+
+#lightBluButton:hover {
+    box-shadow: 0 0 2rem lightskyblue;
 }
 
 button {
@@ -103,6 +245,10 @@ a {
 .gridPixel {
     background-color:white;
     transition: 0.15s;
+}
+
+.gridPixel:hover {
+
 }
 
 /* THIS IS THE CODE FOR THE GLOW EFFECT - IT'S OFF BECAUSE IT OVERLOADED THE DOM TOO MUCH, BUT REMAINED HERE FOR REFERENCE */
